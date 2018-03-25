@@ -1,8 +1,6 @@
 const ipfsAPI = require('ipfs-api');
 
-const ipfsHost = process.env.IPFS_HOST || 'localhost';
-
-const ipfs = ipfsAPI(ipfsHost, 5001);
+var ipfs = ipfsAPI({host: 'localhost', port: '5001', protocol: 'http'})
 
 async function uploadAndPin(buffer) {
   const resp = await ipfs.files.add(buffer);
